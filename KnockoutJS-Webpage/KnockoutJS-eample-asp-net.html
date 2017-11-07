@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Knockout JS - Exmaple</title>
+
+    <!-- MISC links -->
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Luckiest+Guy|VT323" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- KnockoutJS -->
+    <script type="text/javascript" src="Scripts/knockout-3.4.2.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="http://www.kevingillispie.com/" on>Kevin Gillispie</a>
+
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1 class="text-center">
+                    I <i class="fa fa-heart-o" aria-hidden="true"></i> Knockout.js!
+                </h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <!-- Knockout div -->
+
+    <div class="container">
+        <div class="row">
+            <div class="text-center col-md-12">
+                <div class="well"><strong>Just a little demonstration of data binding with text using Knockout.js</strong></div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-6 col-md-offset-3">Write some text here: <p><input data-bind="value: textBox, valueUpdate: 'afterkeydown'" /></p></div>
+        </div>
+        <hr>
+        <div class="row">
+
+            <div class="text-left col-sm-4">
+                <h3 style="font-family: 'Homemade Apple', cursive; hyphens: auto" data-bind="text: textOut1"> </h3>
+            </div>
+
+            <div class="col-sm-4 text-justify">
+                <h3 style="font-family: 'Luckiest Guy', cursive; hyphens: auto"><span data-bind="text: textOut2"> </span></h3>
+            </div>
+
+            <div class="col-sm-4 text-justify">
+                <h2 style="font-family: 'VT323', cursive; hyphens: auto"><span data-bind="text: textOut3"> </span></h2>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <div class="well"><strong>Knockout.js is <em>very</em> responsive to your input!</strong></div>
+            </div>
+        </div>
+
+
+        <!-- -->
+
+
+        <script type="text/javascript">
+
+        </script>
+
+
+        <hr>
+
+
+        <hr>
+        <div class="row">
+            <div class="text-center col-md-6 col-md-offset-3">
+                <h4>The End </h4>
+                <p>Copyright &copy; 2017 &middot; All Rights Reserved &middot; <a href="http://www.kevingillispie.com/">My Website</a></p>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+
+
+    <script type="text/javascript">
+	  // Here's my data model
+			/*var ViewModel =*/ function ViewModel(text) {
+				this.textBox = ko.observable(text);
+				this.textOut1 = ko.computed(function() {
+					// Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
+					return this.textBox();
+				}, this);
+				this.textOut2 = ko.computed(function() {
+					return this.textBox();
+				}, this);
+				this.textOut3 = ko.computed(function() {
+					return this.textBox();
+				}, this);
+
+				this.navBar = ko.computed(function() {
+					return this.textBox();
+				}, this);
+			};
+
+		  	ko.applyBindings(new ViewModel()); // This makes Knockout get to work
+    </script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="Scripts/bootstrap.js"></script>
+
+    <!-- Fontawesome -->
+    <script src="Scripts/fa.js"></script>
+</body>
+</html>
